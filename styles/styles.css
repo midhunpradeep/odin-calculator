@@ -68,7 +68,3 @@ body {
 #btn-container > div > button.active {
   transform: scale(0.975);
 }
-
-.square {
-  aspect-ratio: 1 / 1;
-}
