@@ -64,7 +64,8 @@ body {
   border-radius: 0.5rem;
 }
 
-#btn-container > div > button:active {
+#btn-container > div > button:active,
+#btn-container > div > button.active {
   transform: scale(0.975);
 }
 
