@@ -23,7 +23,6 @@ function updateDisplay() {
 
 function addKeyBindings() {
   window.addEventListener("keydown", (event) => {
-    console.log(event.key);
     let button = document.querySelector(
       `#btn-container button[data-key="${event.key.toLowerCase()}"]`,
     );
