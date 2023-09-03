@@ -2,13 +2,13 @@
 
 const displayElement = document.getElementById("display");
 const displayValues = {
-  firstNumber: null,
+  firstNumber: "",
   operator: null,
-  secondNumber: null,
+  secondNumber: "",
 };
 
 function updateDisplay() {
-  if (displayValues.firstNumber === null) {
+  if (displayValues.firstNumber === "" && displayValues.operator === null) {
     displayElement.classList.add("empty");
     displayElement.textContent = "0";
     return;
@@ -18,7 +18,6 @@ function updateDisplay() {
   displayElement.textContent = displayValues.firstNumber;
   if (displayValues.operator === null) return;
   displayElement.textContent += " " + displayValues.operator;
-  if (displayValues.secondNumber === null) return;
   displayElement.textContent += " " + displayValues.secondNumber;
 }
 
@@ -33,6 +32,85 @@ function addKeyBindings() {
   });
 }
 
+function addButtonEvents() {
+  let buttonContainer = document.getElementById("btn-container");
+
+  let numberButtons = buttonContainer.querySelectorAll(".number");
+  for (const button of numberButtons) {
+    button.addEventListener("click", () => {
+      if (displayValues.operator === null) {
+        // first number is still being edited
+        if (displayValues.firstNumber === "0") {
+          displayValues.firstNumber = ""; // prevent leading zeroes
+        }
+        displayValues.firstNumber += button.textContent;
+      } else {
+        if (displayValues.secondNumber === "0") {
+          displayValues.secondNumber = "";
+        }
+        displayValues.secondNumber += button.textContent;
+      }
+      updateDisplay();
+    });
+  }
+
+  let operatorButtons = buttonContainer.querySelectorAll(".operator");
+  for (const button of operatorButtons) {
+    button.addEventListener("click", (event) => {
+      if (displayValues.firstNumber === "") {
+        displayValues.firstNumber = "0";
+      }
+      displayValues.operator = button.textContent;
+      updateDisplay();
+    });
+  }
+
+  buttonContainer.querySelector("#decimal").addEventListener("click", () => {
+    if (displayValues.operator === null) {
+      if (!displayValues.firstNumber.includes(".")) {
+        if (displayValues.firstNumber === "") {
+          displayValues.firstNumber = "0";
+        }
+        displayValues.firstNumber += ".";
+      }
+    } else {
+      if (!displayValues.secondNumber.includes(".")) {
+        if (displayValues.secondNumber === "") {
+          displayValues.secondNumber = "0";
+        }
+        displayValues.secondNumber += ".";
+      }
+    }
+
+    updateDisplay();
+  });
+
+  buttonContainer.querySelector("#clear").addEventListener("click", () => {
+    displayValues.firstNumber = "";
+    displayValues.operator = null;
+    displayValues.secondNumber = "";
+    updateDisplay();
+  });
+
+  buttonContainer.querySelector("#backspace").addEventListener("click", () => {
+    if (displayValues.secondNumber !== "") {
+      displayValues.secondNumber = displayValues.secondNumber.slice(
+        0,
+        displayValues.secondNumber.length - 1,
+      );
+    } else if (displayValues.operator !== null) {
+      displayValues.operator = null;
+    } else if (displayValues.firstNumber !== "") {
+      displayValues.firstNumber = displayValues.firstNumber.slice(
+        0,
+        displayValues.firstNumber.length - 1,
+      );
+    }
+
+    updateDisplay();
+  });
+}
+
 function simulateClick(button) {
   button.classList.add("active");
   button.click();
@@ -43,7 +121,7 @@ function simulateClick(button) {
 
 function main() {
   addKeyBindings();
-  updateDisplay();
+  addButtonEvents();
 }
 
 main();
