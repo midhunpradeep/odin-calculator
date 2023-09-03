@@ -64,7 +64,13 @@ function addButtonEvents() {
       if (displayValues.firstNumber === "") {
         displayValues.firstNumber = "0";
       }
-      displayValues.operator = button.textContent;
+
+      if (displayValues.secondNumber === "") {
+        displayValues.operator = button.textContent;
+      } else {
+        evaluateDisplayValues();
+        displayValues.operator = button.textContent;
+      }
       updateDisplay();
     });
   }
