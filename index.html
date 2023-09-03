@@ -9,42 +9,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
     <script src="js/calculator.js" defer></script>
 
     <title>Calculator</title>
   </head>
   <body>
-    <div id="calculator-body">
-      <div id="display"></div>
+    <div id="calculator-container">
+      <div id="calculator-body">
+        <div class="empty" id="display">0</div>
 
-      <div id="btn-container">
-        <div>
-          <button id="clear">Clear</button>
-          <button id="backspace"><-</button>
-        </div>
-        <div>
-          <button id="7">7</button>
-          <button id="8">8</button>
-          <button id="9">9</button>
-          <button id="add">+</button>
-        </div>
-        <div>
-          <button id="4">4</button>
-          <button id="5">5</button>
-          <button id="6">6</button>
-          <button id="subtract">-</button>
-        </div>
-        <div>
-          <button id="1">1</button>
-          <button id="2">2</button>
-          <button id="3">3</button>
-          <button id="multiply">*</button>
-        </div>
-        <div>
-          <button id=".">.</button>
-          <button id="0">0</button>
-          <button id="divide">/</button>
-          <button id="equals">=</button>
+        <div id="btn-container">
+          <div>
+            <button id="clear">Clear</button>
+            <button id="backspace">Backspace</button>
+          </div>
+          <div>
+            <button class="square" id="7">7</button>
+            <button class="square" id="8">8</button>
+            <button class="square" id="9">9</button>
+            <button class="square" id="add">+</button>
+          </div>
+          <div>
+            <button class="square" id="4">4</button>
+            <button class="square" id="5">5</button>
+            <button class="square" id="6">6</button>
+            <button class="square" id="subtract">-</button>
+          </div>
+          <div>
+            <button class="square" id="1">1</button>
+            <button class="square" id="2">2</button>
+            <button class="square" id="3">3</button>
+            <button class="square" id="multiply">*</button>
+          </div>
+          <div>
+            <button class="square" id=".">.</button>
+            <button class="square" id="0">0</button>
+            <button class="square" id="divide">/</button>
+            <button class="square" id="equals">=</button>
+          </div>
         </div>
       </div>
     </div>
