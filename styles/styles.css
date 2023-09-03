@@ -18,14 +18,12 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  border: 0.1rem solid #faf0e6;
   border-radius: 1rem;
   padding: 2rem;
   background-color: #352f44;
 }
 
 #display {
-  border: 0.25rem solid #5c5470;
   border-radius: 1rem;
   color: #352f44;
   background-color: #faf0e6;
@@ -60,7 +58,6 @@ body {
   font-size: 2rem;
   padding: 1rem;
   min-width: 5rem;
-  border: 0.1rem solid #faf0e6;
   border-radius: 0.5rem;
 }
 
