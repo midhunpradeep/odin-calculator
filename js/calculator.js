@@ -23,6 +23,10 @@ function updateDisplay() {
 
 function addKeyBindings() {
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      simulateClick(document.getElementById("equals"));
+    }
+
     let button = document.querySelector(
       `#btn-container button[data-key="${event.key.toLowerCase()}"]`,
     );
