@@ -139,6 +139,7 @@ function evaluateDisplayValues() {
       result = divide(displayValues.firstNumber, displayValues.secondNumber);
       break;
     default:
+      result = Number(displayValues.firstNumber);
       break;
   }
 
