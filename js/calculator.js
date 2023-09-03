@@ -85,6 +85,10 @@ function addButtonEvents() {
     updateDisplay();
   });
 
+  buttonContainer
+    .querySelector("#equals")
+    .addEventListener("click", evaluateDisplayValues);
+
   buttonContainer.querySelector("#clear").addEventListener("click", () => {
     displayValues.firstNumber = "";
     displayValues.operator = null;
@@ -117,6 +121,47 @@ function simulateClick(button) {
   setTimeout(() => {
     button.classList.remove("active");
   }, 100);
+}
+
+function evaluateDisplayValues() {
+  let result = 0;
+  switch (displayValues.operator) {
+    case "+":
+      result = add(displayValues.firstNumber, displayValues.secondNumber);
+      break;
+    case "-":
+      result = subtract(displayValues.firstNumber, displayValues.secondNumber);
+      break;
+    case "*":
+      result = multiply(displayValues.firstNumber, displayValues.secondNumber);
+      break;
+    case "/":
+      result = divide(displayValues.firstNumber, displayValues.secondNumber);
+      break;
+    default:
+      break;
+  }
+
+  displayValues.firstNumber = result.toString();
+  displayValues.operator = null;
+  displayValues.secondNumber = "";
+  updateDisplay();
+}
+
+function add(a, b) {
+  return Number(a) + Number(b);
+}
+
+function subtract(a, b) {
+  return Number(a) - Number(b);
+}
+
+function multiply(a, b) {
+  return Number(a) * Number(b);
+}
+
+function divide(a, b) {
+  return Number(a) / Number(b);
 }
 
 function main() {
