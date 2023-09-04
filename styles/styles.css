@@ -68,6 +68,7 @@ body {
   font-size: 2rem;
   padding: 1rem;
   min-width: 5rem;
+  border: 0;
   border-radius: 0.5rem;
 }
 
