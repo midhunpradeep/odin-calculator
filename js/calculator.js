@@ -95,9 +95,13 @@ function addButtonEvents() {
     updateDisplay();
   });
 
-  buttonContainer
-    .querySelector("#equals")
-    .addEventListener("click", evaluateDisplayValues);
+  let equalsButton = buttonContainer.querySelector("#equals");
+  equalsButton.addEventListener("click", evaluateDisplayValues);
+  equalsButton.addEventListener("animationend", (event) => {
+    if (event.animationName !== "shakeAnimation") return;
+
+    equalsButton.classList.remove("shake");
+  });
 
   buttonContainer.querySelector("#clear").addEventListener("click", () => {
     displayValues.firstNumber = "";
@@ -146,6 +150,10 @@ function evaluateDisplayValues() {
       result = multiply(displayValues.firstNumber, displayValues.secondNumber);
       break;
     case "/":
+      if (displayValues.secondNumber === "0") {
+        document.getElementById("equals").classList.add("shake");
+        return;
+      }
       result = divide(displayValues.firstNumber, displayValues.secondNumber);
       break;
     default:
