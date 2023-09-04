@@ -177,8 +177,9 @@ function divide(a, b) {
 
 function main() {
   window.onkeydown = function (event) {
-    if (event.key === "Backspace") {
-      event.preventDefault(); // turn off browser transition to the previous page
+    if (event.key === "Backspace" || event.key === "/") {
+      event.preventDefault(); // turn off browser transition to the previous
+      // page and disable quick find shortcut
     }
   };
 
