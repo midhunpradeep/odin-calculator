@@ -139,6 +139,11 @@ function simulateClick(button) {
 
 function evaluateDisplayValues() {
   let result = 0;
+  if (displayValues.secondNumber === "") {
+    document.getElementById("equals").classList.add("shake");
+    return;
+  }
+
   switch (displayValues.operator) {
     case "+":
       result = add(displayValues.firstNumber, displayValues.secondNumber);
